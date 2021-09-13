@@ -77,14 +77,14 @@ export class ListComponent implements OnInit {
   }
 
   deleteTask(i){
-    this.taskList.splice(i,i+1);
+    this.taskList.splice(i,1);
     this.saveTask();
   }
 
   completeTask(i){
     this.taskList[i]['completed'] = true;
     var t = this.taskList[i];
-    this.taskList.splice(i,i+1);
+    this.taskList.splice(i,1);
     this.taskListComplete.push(t);
     console.log(this.taskList);
     this.saveTask();
