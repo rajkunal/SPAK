@@ -1,0 +1,69 @@
+<div class="container">
+   
+    <div class="row">
+        <div class="col-md-2"></div>
+        
+        <div class="col-md-8">
+            <div style="display:inline">
+            <div style="display:inline">          
+                 <label style="color: purple;font-size: 20px;">UPCOMING TASKS ({{this.taskList.length}}) </label>
+            </div>
+            <div class="example-button-container" style="display:inline;margin-left:10px;">
+                <button (click)='addTask()' mat-mini-fab color="primary" aria-label="Example icon button with a menu icon" >
+                  <mat-icon>add</mat-icon>
+                </button>
+            </div>
+            </div>
+            <div cdkDropList class="example-list" (cdkDropListDropped)="drop($event)">
+                <mat-card style="margin-top:5px;" cdkDrag *ngFor = 'let c of taskList;let i = index;'>
+                    <div class='row'>
+                        <div class="col-md-1">
+                            <button *ngIf="!editTrue[i]" (click)='completeTask(i)' mat-mini-fab  aria-label="Example icon button with a menu icon" >
+                                <mat-icon style="color:green">check_circle_outline</mat-icon>
+                            </button>
+                        </div>
+                        <div class='col-md-9' *ngIf="!editTrue[i]" >
+                        <span style="min-width:600px;"> {{c.task}} </span>
+                        </div>
+                        <div class='col-md-9' *ngIf="editTrue[i]" >
+                            <mat-form-field class="example-full-width" appearance="fill" style="width:500px;">
+                                <mat-label>Edit task</mat-label>
+                                <input matInput name='editTask' [(ngModel)]="c['task']">
+                            </mat-form-field>
+                        </div>
+                        <div class='col-md-2'>
+                            <button *ngIf="editTrue[i]" (click)='saveTask()' mat-mini-fab  aria-label="Example icon button with a menu icon" >
+                                <mat-icon style="color:green">save</mat-icon>
+                            </button>
+                            <button  style="margin-left:5px;" *ngIf="!editTrue[i]" (click)='editTask(i)' mat-mini-fab  aria-label="Example icon button with a menu icon" >
+                                <mat-icon style="color:blue">border_color</mat-icon>
+                            </button>
+                            <button  style="margin-left:5px;" (click)='deleteTask(i)' mat-mini-fab  aria-label="Example icon button with a menu icon" >
+                                <mat-icon style="color:red">delete</mat-icon>
+                            </button>
+                        
+                        </div>
+                    </div>
+                    
+                </mat-card>
+            </div>
+        </div>
+        <div class="col-md-2"></div>
+    </div>
+    
+</div>
+
+<div class="container">
+    
+    <div class="row" style="margin-top:20px;">
+        <div class="col-md-2"></div>
+        <div class="col-md-8" >
+            <label style="color: purple;font-size: 20px;">COMPLETED TASKS ({{this.taskListComplete.length}})</label>
+            <mat-card *ngFor = "let com of taskListComplete">
+               {{com['task']}}
+            </mat-card>
+        </div>
+        <div class="col-md-2"></div>
+    </div>
+    
+</div>

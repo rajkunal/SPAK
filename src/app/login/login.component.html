@@ -1,0 +1,24 @@
+<div class="container">
+    <mat-card>
+        <div class="container">
+            <form class="example-form">
+                <mat-form-field class="example-full-width" appearance="fill">
+                  <mat-label>Email</mat-label>
+                  <input matInput placeholder="abc@gmail.com" name='email' [(ngModel)]="userEmail" >
+                </mat-form-field>
+                
+                <mat-form-field class="example-full-width" appearance="fill">
+                    <mat-label>Password</mat-label>
+                    <input matInput name='pwd' [(ngModel)]="userPwd">
+                  </mat-form-field>
+                
+            </form>
+              
+        </div>
+        <div class="container">
+            <button mat-raised-button color="primary" (click)="userLogin();">Login</button>
+            <button mat-raised-button color="warn"style="margin-left:5px;" (click)="gotoSignUp()">New User? Sign Up!</button>
+            
+        </div>
+    </mat-card>
+</div>
